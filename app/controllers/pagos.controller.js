@@ -5,7 +5,8 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
     const pagos = {
         fecha: req.body.fecha,
-        monto_total: req.body.monto_total
+        monto_total: req.body.monto_total,
+        id_persona: req.body.id_persona,
     };
     // Guardamos a la base de datos
     Pagos.create(pagos)

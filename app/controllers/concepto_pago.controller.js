@@ -5,7 +5,8 @@ const Op = db.Sequelize.Op;
 exports.create = (req, res) => {
     const concepto_pago = {
         concepto: req.body.concepto,
-        monto: req.body.monto
+        monto: req.body.monto,
+        id_pagos: req.body.id_pagos,
     };
     // Guardamos a la base de datos
     Concepto_pago.create(concepto_pago)
