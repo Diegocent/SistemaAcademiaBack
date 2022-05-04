@@ -22,11 +22,39 @@ exports.create = (req, res) => {
   
 };
 // obtiene todas las personas
-exports.findAll = (req, res) => {
-    const nombre = req.query.nombre;
-    var condition = nombre ? { nombre: { [Op.iLike]: `%${nombre}%` } } : null;
+// exports.findAll = (req, res) => {
+//     const documento = req.query.documento;
+//     var condition = documento ? { documento: { [Op.iLike]: `%${documento}%` } } : null;
 
-    Persona.findAll({ where: condition })
+//     Persona.findAll({ where: condition })
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message:
+//                     err.message || "Ocurrio un error al obtener las personas."
+//             });
+//         });
+  
+// };
+
+exports.findAll = (req, res) => {
+    const documento = req.query.documento;
+    var condition = documento ? { documento: { [Op.iLike]: `%${documento}%` } } : null;
+    if (documento) {
+        Persona.findAll({ where: {condition} })
+            .then(data => {
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message:
+                        err.message || "Ocurrio un error al obtener las personas."
+                });
+            });
+    } else {
+        Persona.findAll()
         .then(data => {
             res.send(data);
         })
@@ -36,8 +64,9 @@ exports.findAll = (req, res) => {
                     err.message || "Ocurrio un error al obtener las personas."
             });
         });
-  
+    }
 };
+
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
@@ -75,6 +104,26 @@ exports.update = (req, res) => {
         });
   
 };
+
+exports.findOneDocumento = (req, res) => {
+    const documento = req.params.documento;
+    Persona.findAll({where: {documento:documento}})
+        .then(data => {
+            if (data.length===0) {
+                res.send(false);
+            } else {
+                res.send(true);
+            }
+            
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error "
+            });
+        });
+};
+
+
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;

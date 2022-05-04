@@ -62,7 +62,7 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "La alumno se ha actualizado correctamente."
+                    message: "El alumno se ha actualizado correctamente."
                 });
             } else {
                 res.send({
