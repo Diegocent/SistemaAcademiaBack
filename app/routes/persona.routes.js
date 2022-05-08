@@ -5,7 +5,7 @@ module.exports = app => {
     router.get("/", persona.findAll);
     router.get("/:id", persona.findOne);
     router.get("/documento/:documento", persona.findOneDocumento);
-    router.get("/doc/:documento", persona.findAll);
+    router.get("/doc/:documento", persona.findDocumento);
     router.put('/:id', persona.update);
     router.delete('/:id', persona.delete);
     app.use('/api/persona', router);

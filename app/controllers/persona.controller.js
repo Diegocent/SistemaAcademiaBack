@@ -25,7 +25,7 @@ exports.findAll = (req, res) => {
     const documento = req.query.documento;
     var condition = documento ? { documento: { [Op.iLike]: `%${documento}%` } } : null;
     if (documento) {
-        Persona.findAll({ where: {condition} })
+        Persona.findAll({ where: {documento:documento}})
             .then(data => {
                 res.send(data);
             })
@@ -127,3 +127,16 @@ exports.delete = (req, res) => {
     });
 };
 
+exports.findDocumento = (req, res) => {
+  const documento = req.params.documento;
+  Persona.findAll({where: {documento:documento}})
+      .then(data => {
+              res.send(data[0]);
+  
+      })
+      .catch(err => {
+          res.status(500).send({
+              message: "Error "
+          });
+      });
+};
