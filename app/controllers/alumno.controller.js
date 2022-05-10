@@ -13,6 +13,7 @@ exports.create = (req, res) => {
     derecho_examen: req.body.derecho_examen,
     vestuario: req.body.vestuario,
     curso: req.body.curso,
+    entrada: req.body.entrada,
     id_persona: req.body.id_persona,
   };
   // Guardamos a la base de datos

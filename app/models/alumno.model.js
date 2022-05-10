@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     curso: {
       type: Sequelize.STRING,
     },
-    id_persona: {
+    entrada: {
       type: Sequelize.INTEGER,
     },
   });
