@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     cuota_anual: req.body.cuota_anual,
     derecho_examen: req.body.derecho_examen,
     vestuario: req.body.vestuario,
-    curso: req.body.curso,
+    id_curso: req.body.id_curso,
     entrada: req.body.entrada,
     id_persona: req.body.id_persona,
   };

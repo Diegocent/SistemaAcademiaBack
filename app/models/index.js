@@ -27,6 +27,9 @@ db.Cursos = require("./cursos.model")(sequelize, Sequelize);
 db.Alumno.belongsTo(db.Persona, { foreignKey: "id_persona" });
 db.Persona.hasOne(db.Alumno, { foreignKey: "id_persona" });
 
+db.Alumno.belongsTo(db.Cursos, { foreignKey: "id_curso" });
+db.Cursos.hasMany(db.Alumno, { foreignKey: "id_curso" });
+
 db.Usuario.belongsTo(db.Persona, { foreignKey: "id_persona" });
 db.Persona.hasOne(db.Usuario, { foreignKey: "id_persona" });
 
@@ -38,5 +41,11 @@ db.Alumno.hasMany(db.Pagos, { foreignKey: "id_alumno" });
 
 db.montoConcepto.belongsTo(db.Concepto, { foreignKey: "id_concepto" });
 db.Concepto.hasOne(db.montoConcepto, { foreignKey: "id_concepto" });
+
+db.Cursos.belongsTo(db.montoConcepto, { foreignKey: "cuota" });
+db.montoConcepto.hasOne(db.Cursos, { foreignKey: "cuota" });
+
+db.Cursos.belongsTo(db.montoConcepto, { foreignKey: "examen" });
+db.montoConcepto.hasOne(db.Cursos, { foreignKey: "examen" });
 
 module.exports = db;

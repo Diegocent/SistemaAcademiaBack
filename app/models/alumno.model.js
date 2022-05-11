@@ -17,9 +17,6 @@ module.exports = (sequelize, Sequelize) => {
     vestuario: {
       type: Sequelize.INTEGER,
     },
-    curso: {
-      type: Sequelize.STRING,
-    },
     entrada: {
       type: Sequelize.INTEGER,
     }

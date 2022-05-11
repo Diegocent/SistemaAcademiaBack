@@ -8,6 +8,8 @@ module.exports = (sequelize, Sequelize) => {
     nombre: {
       type: Sequelize.STRING,
     },
+    timestamps: false,
+
   });
   return Curso;
 };
