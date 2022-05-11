@@ -1,6 +1,10 @@
 const db = require("../models");
 const Alumno = db.Alumno;
+const Persona = db.Persona;
 const Op = db.Sequelize.Op;
+const dbConfig = require("../config/db.config");
+const { sequelize } = require("../models");
+
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   const alumno = {
@@ -9,6 +13,7 @@ exports.create = (req, res) => {
     derecho_examen: req.body.derecho_examen,
     vestuario: req.body.vestuario,
     curso: req.body.curso,
+    entrada: req.body.entrada,
     id_persona: req.body.id_persona,
   };
   // Guardamos a la base de datos
@@ -66,26 +71,45 @@ exports.findOne = (req, res) => {
 // };
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
-    const id = req.params.id;
-  
-    Alumno.update(req.body, { where: { id: id } })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "El alumno se ha actualizado correctamente."
-                });
-            } else {
-                res.send({
-                    message: `Ocurrio un error. No se pudo actualizar la alumno con id= ${id}.!`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Error actualizando la alumno con id= " + id
-            });
-          });
+  const id = req.params.id;
+
+  Alumno.update(req.body, { where: { id: id } })
+    .then((num) => {
+      if (num == 1) {
+        res.send({
+          message: "El alumno se ha actualizado correctamente.",
+        });
+      } else {
+        res.send({
+          message: `Ocurrio un error. No se pudo actualizar la alumno con id= ${id}.!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error actualizando la alumno con id= " + id,
+      });
+    });
 };
+
+exports.findAlumnoByCI = (req, res) => {
+  Persona.findAll({ where: { documento: req.params.doc } })
+    .then((data) => {
+      Alumno.findAll({
+        where: {
+          id_persona: data[0].dataValues.id,
+        },
+      }).then((data) => {
+        res.status(500).send(data[0]);
+      });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error ",
+      });
+    });
+};
+
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
