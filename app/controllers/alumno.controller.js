@@ -50,6 +50,20 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+// exports.findDocumento = (req, res) => {
+//   const documento = req.params.documento;
+//   Persona.findAll({where: {documento:documento}})
+//       .then(data => {
+//               res.send(data[0]);
+  
+//       })
+//       .catch(err => {
+//           res.status(500).send({
+//               message: "Error "
+//           });
+//       });
+// };
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
