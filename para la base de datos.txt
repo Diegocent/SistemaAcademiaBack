@@ -1,0 +1,48 @@
+tablas
+persona
+nombre
+apellido
+numero de cedula
+
+alumna
+curso baby vallet pre vallet
+cantidad de materias
+numero de cuota 
+tipo de pago cuota, derecho a examen, vestuario []
+deuda anual = cuota* cantidad de meses de clases
+cuota = 280.000, 2.800.000
+derecho a examen = 50.000* cantidad de materias,
+vestuario = 0; (al completar el pago de este se cera)
+
+
+
+usuario
+username
+contraseña
+
+cobro
+fecha de pago
+monto total
+
+concepto de pago
+id cobro
+concepto
+monto
+
+
+
+id cuota int 280.000
+id derecho a examen int cantidad de materias*monto de derecho
+
+cuota
+id alumna
+monto5
+concepto
+
+relacion 
+persona a alumna
+cobro a descripcion de cobro
+tipos de pago a descripcion de cobro
+
+
+api con node js
