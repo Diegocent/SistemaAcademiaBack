@@ -29,6 +29,9 @@ require("./app/routes/concepto_pago.routes")(app);
 require("./app/routes/parametricos.routes")(app);
 require("./app/routes/persona.routes")(app);
 require("./app/routes/usuario.routes")(app);
+require("./app/routes/concepto.routes")(app);
+require("./app/routes/cursos.routes")(app);
+require("./app/routes/monto_concepto.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

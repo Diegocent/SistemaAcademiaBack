@@ -1,4 +1,3 @@
-const { Model } = require("sequelize/types");
 const db = require("../models");
 const MontoConcepto = db.MontoConcepto;
 const Op = db.Sequelize.Op;

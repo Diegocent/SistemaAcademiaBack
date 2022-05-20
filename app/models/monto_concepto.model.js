@@ -8,6 +8,9 @@ module.exports = (sequelize, Sequelize) => {
     monto: {
       type: Sequelize.INTEGER,
     },
+    },
+    {
+    timestamps: false,
   });
   return montoConcepto;
 };
