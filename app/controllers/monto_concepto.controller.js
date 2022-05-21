@@ -1,5 +1,6 @@
+const { Concepto } = require("../models");
 const db = require("../models");
-const MontoConcepto = db.MontoConcepto;
+const montoConcepto = db.montoConcepto;
 const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -8,7 +9,7 @@ exports.create = (req, res) => {
         id_concepto: req.body.id_concepto,
     };
     // Guardamos a la base de datos
-    MontoConcepto.create(montoconcepto)
+    montoConcepto.create(montoconcepto)
         .then(data => {
             res.send(data);
         })
@@ -22,7 +23,7 @@ exports.create = (req, res) => {
 };
 // obtiene todos los pagos
 exports.findAll = (req, res) => {
-    MontoConcepto.findAll({include: {model: Concepto}})
+    montoConcepto.findAll({include: {model: Concepto}})
         .then(data => {
             res.send(data);
         })
@@ -37,7 +38,7 @@ exports.findAll = (req, res) => {
 
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    MontoConcepto.findByPk(id)
+    montoConcepto.findByPk(id)
         .then(data => {
             res.send(data);
         })
@@ -52,7 +53,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
   
-    MontoConcepto.update(req.body, { where: { id: id } })
+    montoConcepto.update(req.body, { where: { id: id } })
         .then(num => {
             if (num == 1) {
                 res.send({
@@ -74,7 +75,7 @@ exports.update = (req, res) => {
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
-    MontoConcepto.destroy({ where: { id: id } })
+    montoConcepto.destroy({ where: { id: id } })
         .then(num => {
             if (num == 1) {
                 res.send({
