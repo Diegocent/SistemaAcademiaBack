@@ -8,13 +8,12 @@ const { sequelize } = require("../models");
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   const alumno = {
+    descuento: req.body.descuento,
     cantidad_materias: req.body.cantidad_materias,
-    cuota_anual: req.body.cuota_anual,
-    derecho_examen: req.body.derecho_examen,
     vestuario: req.body.vestuario,
-    id_curso: req.body.id_curso,
     entrada: req.body.entrada,
     id_persona: req.body.id_persona,
+    id_curso: req.body.id_curso,
   };
   // Guardamos a la base de datos
   Alumno.create(alumno)

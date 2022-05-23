@@ -5,13 +5,10 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
+    descuento: {
+      type: Sequelize.INTEGER,
+    },
     cantidad_materias: {
-      type: Sequelize.INTEGER,
-    },
-    cuota_anual: {
-      type: Sequelize.INTEGER,
-    },
-    derecho_examen: {
       type: Sequelize.INTEGER,
     },
     vestuario: {
