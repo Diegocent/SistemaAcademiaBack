@@ -43,9 +43,9 @@ db.montoConcepto.belongsTo(db.Concepto, { foreignKey: "id_concepto" });
 db.Concepto.hasOne(db.montoConcepto, { foreignKey: "id_concepto" });
 
 db.Cursos.belongsTo(db.montoConcepto, { foreignKey: "cuota" });
-db.montoConcepto.hasOne(db.Cursos, { foreignKey: "cuota" });
+db.montoConcepto.hasMany(db.Cursos, { foreignKey: "cuota" });
 
 db.Cursos.belongsTo(db.montoConcepto, { foreignKey: "examen" });
-db.montoConcepto.hasOne(db.Cursos, { foreignKey: "examen" });
+db.montoConcepto.hasMany(db.Cursos, { foreignKey: "examen" });
 
 module.exports = db;
