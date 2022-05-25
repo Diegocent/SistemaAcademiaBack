@@ -1,6 +1,6 @@
+const { Persona, Cursos } = require("../models");
 const db = require("../models");
 const Alumno = db.Alumno;
-const Persona = db.Persona;
 const Op = db.Sequelize.Op;
 const dbConfig = require("../config/db.config");
 const { sequelize } = require("../models");
@@ -28,10 +28,8 @@ exports.create = (req, res) => {
 };
 // obtiene todos los alumnos
 exports.findAll = (req, res) => {
-  const curso = req.query.curso;
-  var condition = curso ? { curso: { [Op.iLike]: `%${curso}%` } } : null;
 
-  Alumno.findAll({ where: condition })
+  Alumno.findAll({ include: [Persona,Cursos] })
     .then((data) => {
       res.send(data);
     })
