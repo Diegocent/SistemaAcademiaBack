@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Alumno.findByPk(id)
+  Alumno.findByPk(id, {include: [Persona,Cursos]})
     .then((data) => {
       res.send(data);
     })
