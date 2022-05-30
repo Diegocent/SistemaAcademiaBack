@@ -6,8 +6,7 @@ const db = require("./app/models");
 db.sequelize.sync();
 
 var corsOptions = {
-  origin: "http://localhost:4200",
-  deploy: "http://pykasujeroky.infographicdic.com",
+  origin: "http://pykasujeroky.infographicdic.com",
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
