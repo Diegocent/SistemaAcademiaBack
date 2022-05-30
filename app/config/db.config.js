@@ -12,10 +12,10 @@
 //   },
 // };
 module.exports = {
-  HOST: "localhost",
-  USER: "user_academia",
+  HOST: "sql716.main-hosting.eu",
+  USER: "u592463271_user_academia",
   PASSWORD: "Admin.12345",
-  DB: "SistemaAcademia",
+  DB: "u592463271_sistemaacademi",
   dialect: "mysql",
   pool: {
     max: 30,
