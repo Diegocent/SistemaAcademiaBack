@@ -6,7 +6,7 @@ exports.create = (req, res) => {
     const pagos = {
         fecha: req.body.fecha,
         monto_total: req.body.monto_total,
-        id_persona: req.body.id_persona,
+        id_alumno: req.body.id_alumno,
     };
     // Guardamos a la base de datos
     Pagos.create(pagos)
