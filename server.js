@@ -5,13 +5,13 @@ const db = require("./app/models");
 
 db.sequelize.sync();
 
-var corsOptions = {
-  origin: "http://pykasujeroky.infographicdic.com",
-};
-
 // var corsOptions = {
-//   origin: "http://localhost:4200",
+//   origin: "http://pykasujeroky.infographicdic.com",
 // };
+
+var corsOptions = {
+  origin: "http://localhost:4200",
+};
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());

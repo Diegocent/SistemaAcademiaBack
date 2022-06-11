@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     entrada: {
       type: Sequelize.INTEGER,
+    },
+    cantidad_cuotas: {
+      type: Sequelize.INTEGER,
     }
   });
   return Alumno;

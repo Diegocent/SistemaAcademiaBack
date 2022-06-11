@@ -5,9 +5,6 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        fecha: {
-            type: Sequelize.DATE
-        },
         monto_total: {
             type: Sequelize.INTEGER
         }

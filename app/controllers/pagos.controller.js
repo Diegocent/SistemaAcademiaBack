@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     const pagos = {
-        fecha: req.body.fecha,
         monto_total: req.body.monto_total,
         id_alumno: req.body.id_alumno,
     };
