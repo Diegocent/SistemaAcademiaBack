@@ -57,11 +57,11 @@ exports.update = (req, res) => {
         .then(num => {
             if (num == 1) {
                 res.send({
-                    message: "el curso se ha actualizado correctamente."
+                    message: "el monto concepto se ha actualizado correctamente."
                 });
             } else {
                 res.send({
-                    message: `Ocurrio un error. No se pudo actualizar el curso con id= ${id}.!`
+                    message: `Ocurrio un error. No se pudo actualizar el monto concepto con id= ${id}.!`
                 });
             }
         })

@@ -1,6 +1,7 @@
 const db = require("../models");
 const Concepto_pago = db.Concepto_pago;
 const Op = db.Sequelize.Op;
+const { Pagos } = require("../models");
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
     const concepto_pago = {
@@ -24,9 +25,8 @@ exports.create = (req, res) => {
 // obtiene todos los Concepto_pago
 exports.findAll = (req, res) => {
     const nombre = req.query.nombre;
-    var condition = nombre ? { nombre: { [Op.iLike]: `%${nombre}%` } } : null;
 
-    Concepto_pago.findAll({ where: condition })
+    Concepto_pago.findAll({ include: {model: Pagos} })
         .then(data => {
             res.send(data);
         })

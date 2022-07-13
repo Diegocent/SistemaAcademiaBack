@@ -1,4 +1,4 @@
-const { Persona, Cursos } = require("../models");
+const { Persona, Cursos, Concepto, montoConcepto } = require("../models");
 const db = require("../models");
 const Alumno = db.Alumno;
 const Op = db.Sequelize.Op;
@@ -29,8 +29,9 @@ exports.create = (req, res) => {
 };
 // obtiene todos los alumnos
 exports.findAll = (req, res) => {
+  const CursoId = req.query.curso;
 
-  Alumno.findAll({ include: [Persona,Cursos] })
+  Alumno.findAll({ include: [{model: Persona},{model: Cursos,include:[{model: montoConcepto}]}]})
     .then((data) => {
       res.send(data);
     })
@@ -43,7 +44,7 @@ exports.findAll = (req, res) => {
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  Alumno.findByPk(id, {include: [Persona,Cursos]})
+  Alumno.findByPk(id, {include:  [{model: Persona},{model: Cursos,include:[{model: montoConcepto}]}] })
     .then((data) => {
       res.send(data);
     })
