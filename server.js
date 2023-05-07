@@ -1,22 +1,24 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const db = require("./app/models");
 
 db.sequelize.sync();
 
+// var corsOptions = {
+//   origin: "http://pykasujeroky.infographicdic.com",
+// };
+
 var corsOptions = {
-  origin: "http://pykasujeroky.infographicdic.com",
+  origin: "http://localhost:4200",
 };
 
-// var corsOptions = {
-//   origin: "http://localhost:4200",
-// };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
-app.use(express.json());
+app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 // simple route
 
 /* db.sequelize.sync({ force: true }).then(() => {
