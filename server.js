@@ -11,7 +11,7 @@ db.sequelize.sync();
 // };
 
 var corsOptions = {
-  origin: "http://localhost:4200",
+  origin: "http://localhost:3223",
 };
 
 app.use(cors(corsOptions));
@@ -40,7 +40,7 @@ require("./app/routes/cursos.routes")(app);
 require("./app/routes/monto_concepto.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3222;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
